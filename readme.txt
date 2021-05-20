@@ -1,0 +1,1 @@
+Aplicacion para tomar pedidos sin interactuar con camareros.
