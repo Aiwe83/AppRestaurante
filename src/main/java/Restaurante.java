@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Objects;
 
 public class Restaurante {
     String nombre;
@@ -72,5 +73,18 @@ public class Restaurante {
                 ", direccion='" + direccion + '\'' +
                 ", horario=" + horario +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Restaurante that = (Restaurante) o;
+        return Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(tipo, that.tipo) && Objects.equals(direccion, that.direccion) && Objects.equals(horario, that.horario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, descripcion, tipo, direccion, horario);
     }
 }
