@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Carta {
     String nombre;
     String descripcion;
@@ -70,5 +72,18 @@ public class Carta {
     public Carta setIngredientes(String ingredientes) {
         this.ingredientes = ingredientes;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Carta carta = (Carta) o;
+        return Double.compare(carta.precio, precio) == 0 && Objects.equals(nombre, carta.nombre) && Objects.equals(descripcion, carta.descripcion) && Objects.equals(foto, carta.foto) && Objects.equals(disponibilidad, carta.disponibilidad) && Objects.equals(ingredientes, carta.ingredientes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, descripcion, precio, foto, disponibilidad, ingredientes);
     }
 }
