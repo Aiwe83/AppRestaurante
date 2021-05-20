@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Cliente {
    private int id;
     private String nombre;
@@ -58,5 +60,18 @@ public class Cliente {
                 ", apellido='" + apellido + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return id == cliente.id && Objects.equals(nombre, cliente.nombre) && Objects.equals(apellido, cliente.apellido) && Objects.equals(email, cliente.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, apellido, email);
     }
 }
